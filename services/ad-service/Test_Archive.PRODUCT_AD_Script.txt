@@ -1,0 +1,52 @@
+CREATE AD Test_Archive.PRODUCT
+DESC //'Generated Access Definition'//
+
+TABLE (departments ACCESS SUID REF N DAA Y UR N PREDOP A VARDELIM : COLFLAG N EXTRROWID N)
+TABLE (employees ACCESS SUID REF N DAA Y UR N PREDOP A VARDELIM : COLFLAG N EXTRROWID N)
+TABLE (salary_history ACCESS SUID REF N DAA Y UR N PREDOP A VARDELIM : COLFLAG N EXTRROWID N)
+TABLE (salary_log ACCESS SUID REF N DAA Y UR N PREDOP A VARDELIM : COLFLAG N EXTRROWID N)
+TABLE (employees_hr ACCESS SUID REF N DAA Y UR N PREDOP A VARDELIM : COLFLAG N EXTRROWID N)
+TABLE (jobs ACCESS SUID REF N DAA Y UR N PREDOP A VARDELIM : COLFLAG N EXTRROWID N)
+TABLE (salary_log ACCESS SUID REF N DAA Y UR N PREDOP A VARDELIM : COLFLAG N EXTRROWID N)
+TABLE (sys_config ACCESS SUID REF N DAA Y UR N PREDOP A VARDELIM : COLFLAG N EXTRROWID N)
+
+-- PRIMARY KEYS --
+PRIMARY KEYS (departments -> dept_id)
+PRIMARY KEYS (employees -> emp_id)
+PRIMARY KEYS (salary_history -> id)
+PRIMARY KEYS (salary_log -> log_id, log_id)
+PRIMARY KEYS (employees_hr -> emp_id)
+PRIMARY KEYS (jobs -> job_id)
+PRIMARY KEYS (salary_log -> log_id, log_id)
+PRIMARY KEYS (sys_config -> variable)
+
+-- FOREIGN KEYS --
+FOREIGN KEYS (departments -> )
+FOREIGN KEYS (employees -> dept_id -> departments.dept_id)
+FOREIGN KEYS (salary_history -> )
+FOREIGN KEYS (salary_log -> )
+FOREIGN KEYS (employees_hr -> job_id -> jobs.job_id)
+FOREIGN KEYS (jobs -> )
+FOREIGN KEYS (salary_log -> )
+FOREIGN KEYS (sys_config -> )
+
+-- INDEXES --
+INDEXES (departments -> dept_name, PRIMARY, idx_dept_name)
+INDEXES (employees -> email, PRIMARY, dept_id, idx_emp_email, idx_emp_name)
+INDEXES (salary_history -> PRIMARY)
+INDEXES (salary_log -> PRIMARY, PRIMARY)
+INDEXES (employees_hr -> PRIMARY, job_id)
+INDEXES (jobs -> PRIMARY, idx_job_title)
+INDEXES (salary_log -> PRIMARY, PRIMARY)
+INDEXES (sys_config -> PRIMARY)
+
+-- SEQUENCES --
+
+-- TRIGGERS --
+
+
+-- PROCEDURES --
+
+
+-- FUNCTIONS --
+
